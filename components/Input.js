@@ -17,10 +17,10 @@ import {
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 
 function Input() {
-  const [input, setInput] = useState();
-  const [selectedFile, setSelectedFile] = useState();
-  const filePickerRef = useRef(null);
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const filePickerRef = useRef(null);
 
   const sendPost = async () => {
     if (loading) return;
@@ -29,8 +29,8 @@ function Input() {
     const docRef = await addDoc(collection(db, "posts"), {
       // id: session.user.uid,
       // username: session.user.name,
-      // userImg: session.user.image,
-      // tag: session.user.tag,
+      //  userImg: session.user.image,
+      //  tag: session.user.tag,
       text: input,
       timestamp: serverTimestamp(),
     });
@@ -64,9 +64,15 @@ function Input() {
 
   return (
     <div
-      className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll scrollbar-hide`}
+      className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll scrollbar-hide ${
+        loading && "opacity-60"
+      }`}
     >
-      <img src="" alt="" className="h-11 w-11 rounded-full cursor-pointer" />
+      <img
+        src="https://icon-library.com/images/google-user-icon/google-user-icon-16.jpg"
+        alt=""
+        className="h-11 w-11 rounded-full cursor-pointer"
+      />
       <div className="divide-y divide-gray-700 w-full">
         <div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`}>
           <textarea
@@ -93,35 +99,43 @@ function Input() {
             </div>
           )}
         </div>
-        <div className="flex items-center justify-between pt-2.5">
-          <div className="flex items-center">
-            <div className="icon" onClick={() => filePickerRef.current.click()}>
-              <PhotographIcon className="text-[#1d9bf0] h-[22px]" />
-              <input
-                type="file"
-                ref={filePickerRef}
-                hidden
-                onChange={addImageToPost}
-              />
+        {!loading && (
+          <div className="flex items-center justify-between pt-2.5">
+            <div className="flex items-center">
+              <div
+                className="icon"
+                onClick={() => filePickerRef.current.click()}
+              >
+                <PhotographIcon className="text-[#1d9bf0] h-[22px]" />
+                <input
+                  type="file"
+                  ref={filePickerRef}
+                  hidden
+                  onChange={addImageToPost}
+                />
+              </div>
+
+              <div className="icon rotate-90">
+                <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
+              </div>
+
+              <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
+                <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
+              </div>
+
+              <div className="icon">
+                <CalendarIcon className="text-[#1d9bf0] h-[22px]" />
+              </div>
             </div>
-            <div className="icon rotate-90">
-              <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
-            </div>
-            <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
-              <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
-            </div>
-            <div className="icon">
-              <CalendarIcon className="text-[#1d9bf0] h-[22px]" />
-            </div>
+            <button
+              className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
+              disabled={!input && !selectedFile}
+              onClick={sendPost}
+            >
+              Tweet
+            </button>
           </div>
-          <button
-            className="bg-[#1d9bf0] text-white rounded-full px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8] disabled:hover:bg-[#1d9bf0] disabled:opacity-50 disabled:cursor-default"
-            disabled={!input && !selectedFile}
-            // onClick={sendPost}
-          >
-            Tweet
-          </button>
-        </div>
+        )}
       </div>
     </div>
   );
