@@ -2,8 +2,13 @@ import Head from "next/head";
 import Feed from "../components/Feed";
 import Sidebar from "../components/Sidebar";
 import { getProviders, getSession, useSession } from "next-auth/react";
+import Login from "../components/Login";
 
-export default function Home() {
+export default function Home({ trendingResults, followResults, providers }) {
+  const { data: session } = useSession();
+
+  if (!session) return <Login providers={providers} />;
+
   return (
     <div>
       <Head>
@@ -23,7 +28,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context) {
-  const trendingRresesults = await fetch("https://jsonkeeper.com/b/NKEV").then(
+  const trendingResults = await fetch("https://jsonkeeper.com/b/NKEV").then(
     (res) => res.json()
   );
   const followResults = await fetch("https://jsonkeeper.com/b/59JF").then(
