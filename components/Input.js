@@ -15,8 +15,10 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import { useSession } from "next-auth/react";
 
 function Input() {
+  const { data: session } = useSession();
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -27,10 +29,10 @@ function Input() {
     setLoading(true);
 
     const docRef = await addDoc(collection(db, "posts"), {
-      // id: session.user.uid,
-      // username: session.user.name,
-      //  userImg: session.user.image,
-      //  tag: session.user.tag,
+      id: session.user.uid,
+      username: session.user.name,
+      userImg: session.user.image,
+      tag: session.user.tag,
       text: input,
       timestamp: serverTimestamp(),
     });
@@ -69,7 +71,7 @@ function Input() {
       }`}
     >
       <img
-        src="https://icon-library.com/images/google-user-icon/google-user-icon-16.jpg"
+        src={session.user.image}
         alt=""
         className="h-11 w-11 rounded-full cursor-pointer"
       />
