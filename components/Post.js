@@ -70,7 +70,7 @@ export default function Post({ id, post, postPage }) {
     >
       {!postPage && (
         <img
-          src={post.userImg}
+          src={post?.userImg}
           alt=""
           className="h-11 w-11 rounded-full mr-4"
         />
@@ -79,7 +79,7 @@ export default function Post({ id, post, postPage }) {
         <div className={`flex ${!postPage && "justify-between"}`}>
           {postPage && (
             <img
-              src={post.userImg}
+              src={post?.userImg}
               alt="Profile Pic"
               className="h-11 w-11 rounded-full mr-4"
             />
@@ -91,12 +91,12 @@ export default function Post({ id, post, postPage }) {
                   !postPage && "inline-block"
                 }`}
               >
-                {post.username}
+                {post?.username}
               </h4>
               <span
                 className={`text-sm sm:text-[15px] ${!postPage && "ml-1.5"}`}
               >
-                @{post.tag}
+                @{post?.tag}
               </span>
             </div>{" "}
             ·{" "}
@@ -105,7 +105,7 @@ export default function Post({ id, post, postPage }) {
             </span>
             {!postPage && (
               <p className="text-[#d9d9d9] text-[15px] sm:text-base mt-0.5">
-                {post.text}
+                {post?.text}
               </p>
             )}
           </div>
@@ -114,10 +114,10 @@ export default function Post({ id, post, postPage }) {
           </div>
         </div>
         {postPage && (
-          <p className="text-[#d9d9d9] mt-0.5 text-xl">{post.text}</p>
+          <p className="text-[#d9d9d9] mt-0.5 text-xl">{post?.text}</p>
         )}
         <img
-          src={post.image}
+          src={post?.image}
           alt=""
           className="rounded-2xl max-h-[700px] object-cover mr-2"
         />
@@ -137,14 +137,14 @@ export default function Post({ id, post, postPage }) {
             <div className="icon group-hover:bg-[#1d9bf0] group-hover:bg-opacity-10">
               <ChatIcon className="h-5 group-hover:text-[#1d9bf0]" />
             </div>
-            {/* {comments.length > 0 && (
+            {comments.length > 0 && (
               <span className="group-hover:text-[#1d9bf0] text-sm">
                 {comments.length}
               </span>
-            )} */}
+            )}
           </div>
 
-          {session.user.uid === post.id ? (
+          {session.user.uid === post?.id ? (
             <div
               className="flex items-center space-x-1 group"
               onClick={(e) => {
