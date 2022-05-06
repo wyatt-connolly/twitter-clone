@@ -39,6 +39,14 @@ export default function Post({ id, post, postPage }) {
 
   useEffect(
     () =>
+      onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
+        setLikes(snapshot.docs)
+      ),
+    [db, id]
+  );
+
+  useEffect(
+    () =>
       setLiked(
         likes.findIndex((like) => like.id === session?.user?.uid) !== -1
       ),
@@ -93,7 +101,7 @@ export default function Post({ id, post, postPage }) {
             </div>{" "}
             ·{" "}
             <span className="hover:underline text-sm sm:text-[15px]">
-              <Moment fromNow>{post.timestamp.toDate()}</Moment>
+              <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
             </span>
             {!postPage && (
               <p className="text-[#d9d9d9] text-[15px] sm:text-base mt-0.5">
@@ -161,7 +169,7 @@ export default function Post({ id, post, postPage }) {
             className="flex items-center space-x-1 group"
             onClick={(e) => {
               e.stopPropagation();
-              // likePost();
+              likePost();
             }}
           >
             <div className="icon group-hover:bg-pink-600/10">
