@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Twitter 
 
-## Getting Started
+> Twitter clone made with Next.js
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+https://user-images.githubusercontent.com/88942814/167883422-43277060-96a5-4782-8a0c-bc0dd4622e30.mp4
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📌 Table of Contents
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [Demo Website](#eyes-demo-website)
+- [Technologies](#computer-technologies)
+- [Features](#rocket-features)
+- [Lessons](#pencil-lessons)
+- [Visual Demo](#crystal_ball-visual-demo)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+# :eyes: Demo Website
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+:point_right: demo: https://twitter-clone-five-iota.vercel.app/
 
-## Learn More
+# :computer: Technologies
 
-To learn more about Next.js, take a look at the following resources:
+This project was made using the follow technologies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js](https://nextjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Tailwind](https://tailwindcss.com/)
+- [Next-Auth](https://next-auth.js.org/)
+- [Recoil](https://recoiljs.org/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# :rocket: Features
+- Sign-in with Google using Next-Auth
+- Firebase backend
+- Recoil state management
+- Post text/images
+- Like, comment and delete on others posts
 
-## Deploy on Vercel
+# :pencil: Lessons
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The inspiration for this project from the [Odin Project](theodinproject.com). The instructions were to replicate your favorite website as close as possible, so I chose Twitter. I knew I needed a sign-in, backend and state management tool so I chose Next-Auth, Firebase and Recoil. A takeaway I learned from the experience is that Next-Auth is a gamechanger. After using a normal registration form with my ecommerce site, I will always go with Next-Auth in the future. Instead of filling out your information individally, Next-Auth allows a single click sign-in with most providers (I chose Google) which helps onboard users faster. 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I also gained experience with Firebase and Recoil. I used Sanity in my ecommerce project, and they are both amazing backends. Both of them have their pros and cons, and I will use both in the future. Recoil seemed to be a better experience in this project compared to react context. It has more of the same properties of useState which I'm familiar of. 
+
+# :crystal_ball: Visual Demo
+
+> **Sign-In**
+
+![gpBo3O4](https://user-images.githubusercontent.com/88942814/167860190-d616a95b-daf7-4f21-ae6a-27f1416d777a.png)
+
+> **Homepage**
+
+![mXkj9WV](https://user-images.githubusercontent.com/88942814/167863609-28336c53-4066-4f60-bca1-3f7e74a33d7a.png)
+
+> **Post Preview**
+
+![qYRLmSf](https://user-images.githubusercontent.com/88942814/167864022-5f7f4ad7-b7cc-43da-82ab-21015728f67d.png)
+
+> **Popup Modal**
+
+![OSir3WK](https://user-images.githubusercontent.com/88942814/167860632-ab412c12-2324-42ba-b796-e954bcba4cfc.png)
+
+> **Comment**
+
+![UTrormt](https://user-images.githubusercontent.com/88942814/167860324-81df5e52-d05b-47f8-ada1-f41be5135ade.png)
