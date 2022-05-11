@@ -12,27 +12,20 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import Modal from "../components/Modal";
 import Sidebar from "../components/Sidebar";
-// import Widgets from "../components/Widgets";
+import Widgets from "../components/Widgets";
 import Post from "../components/Post";
 import { db } from "../firebase";
 import { ArrowLeftIcon } from "@heroicons/react/solid";
-// import Comment from "../components/Comment";
-import Head from "next/head";
-import Login from "../components/Login";
 import Comment from "../components/Comment";
-import Widgets from "../components/Widgets";
+import Head from "next/head";
 
-export default function PostPage({
-  trendingResults,
-  followResults,
-  providers,
-}) {
+function PostPage({ trendingResults, followResults, providers }) {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(modalState);
-  const router = useRouter();
-  const { id } = router.query;
   const [post, setPost] = useState();
   const [comments, setComments] = useState([]);
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(
     () =>
@@ -94,11 +87,14 @@ export default function PostPage({
           trendingResults={trendingResults}
           followResults={followResults}
         />
+
         {isOpen && <Modal />}
       </main>
     </div>
   );
 }
+
+export default PostPage;
 
 export async function getServerSideProps(context) {
   const trendingResults = await fetch("https://jsonkeeper.com/b/59JF").then(
