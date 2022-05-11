@@ -28,7 +28,7 @@ import { useRecoilState } from "recoil";
 import { modalState, postIdState } from "../atoms/modalAtom";
 import { db } from "../firebase";
 
-export default function Post({ id, post, postPage }) {
+function Post({ id, post, postPage }) {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(modalState);
   const [postId, setPostId] = useRecoilState(postIdState);
@@ -110,7 +110,7 @@ export default function Post({ id, post, postPage }) {
               >
                 @{post?.tag}
               </span>
-            </div>{" "}
+            </div>
             ·{" "}
             <span className="hover:underline text-sm sm:text-[15px]">
               <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
@@ -213,3 +213,5 @@ export default function Post({ id, post, postPage }) {
     </div>
   );
 }
+
+export default Post;

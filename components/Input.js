@@ -1,4 +1,3 @@
-import { useState, useRef } from "react";
 import {
   CalendarIcon,
   ChartBarIcon,
@@ -6,6 +5,7 @@ import {
   PhotographIcon,
   XIcon,
 } from "@heroicons/react/outline";
+import { useRef, useState } from "react";
 import { db, storage } from "../firebase";
 import {
   addDoc,
@@ -15,7 +15,8 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import dynamic from "next/dynamic";
 
 function Input() {
   const { data: session } = useSession();
@@ -23,6 +24,7 @@ function Input() {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef(null);
+  const [showEmojis, setShowEmojis] = useState(false);
 
   const sendPost = async () => {
     if (loading) return;
@@ -51,6 +53,7 @@ function Input() {
     setLoading(false);
     setInput("");
     setSelectedFile(null);
+    setShowEmojis(false);
   };
 
   const addImageToPost = (e) => {
@@ -64,6 +67,14 @@ function Input() {
     };
   };
 
+  const addEmoji = (e) => {
+    let sym = e.unified.split("-");
+    let codesArray = [];
+    sym.forEach((el) => codesArray.push("0x" + el));
+    let emoji = String.fromCodePoint(...codesArray);
+    setInput(input + emoji);
+  };
+
   return (
     <div
       className={`border-b border-gray-700 p-3 flex space-x-3 overflow-y-scroll scrollbar-hide ${
@@ -74,6 +85,7 @@ function Input() {
         src={session.user.image}
         alt=""
         className="h-11 w-11 rounded-full cursor-pointer"
+        onClick={signOut}
       />
       <div className="divide-y divide-gray-700 w-full">
         <div className={`${selectedFile && "pb-7"} ${input && "space-y-2.5"}`}>
@@ -119,10 +131,6 @@ function Input() {
 
               <div className="icon rotate-90">
                 <ChartBarIcon className="text-[#1d9bf0] h-[22px]" />
-              </div>
-
-              <div className="icon" onClick={() => setShowEmojis(!showEmojis)}>
-                <EmojiHappyIcon className="text-[#1d9bf0] h-[22px]" />
               </div>
 
               <div className="icon">

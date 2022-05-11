@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ChartBarIcon,
   ChatIcon,
@@ -8,7 +7,7 @@ import {
 } from "@heroicons/react/outline";
 import Moment from "react-moment";
 
-export default function Comment({ id, comment }) {
+function Comment({ comment }) {
   return (
     <div className="p-3 flex cursor-pointer border-b border-gray-700">
       <img
@@ -63,3 +62,5 @@ export default function Comment({ id, comment }) {
     </div>
   );
 }
+
+export default Comment;

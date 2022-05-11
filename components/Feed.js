@@ -10,11 +10,28 @@ function Feed() {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
+  // MESSY
+  // useEffect(() => {
+  //   const unsubscribe = onSnapshot(
+  //     query(collection(db, "posts"), orderBy("timestamp", "desc")),
+  //     (snapshot) => {
+  //       setPosts(snapshot.docs);
+  //     }
+  //   );
+
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [db]);
+
+  // CLEAN
   useEffect(
     () =>
       onSnapshot(
         query(collection(db, "posts"), orderBy("timestamp", "desc")),
-        (snapshot) => setPosts(snapshot.docs)
+        (snapshot) => {
+          setPosts(snapshot.docs);
+        }
       ),
     [db]
   );

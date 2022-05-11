@@ -20,6 +20,7 @@ import { ArrowLeftIcon } from "@heroicons/react/solid";
 import Head from "next/head";
 import Login from "../components/Login";
 import Comment from "../components/Comment";
+import Widgets from "../components/Widgets";
 
 export default function PostPage({
   trendingResults,
@@ -89,6 +90,10 @@ export default function PostPage({
             </div>
           )}
         </div>
+        <Widgets
+          trendingResults={trendingResults}
+          followResults={followResults}
+        />
         {isOpen && <Modal />}
       </main>
     </div>
@@ -96,10 +101,10 @@ export default function PostPage({
 }
 
 export async function getServerSideProps(context) {
-  const trendingResults = await fetch("https://jsonkeeper.com/b/NKEV").then(
+  const trendingResults = await fetch("https://jsonkeeper.com/b/59JF").then(
     (res) => res.json()
   );
-  const followResults = await fetch("https://jsonkeeper.com/b/WWMJ").then(
+  const followResults = await fetch("https://jsonkeeper.com/b/F12C").then(
     (res) => res.json()
   );
   const providers = await getProviders();
