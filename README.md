@@ -36,9 +36,9 @@ This project was made using the follow technologies:
 
 # :pencil: Lessons
 
-The goal for this project was to replicate a social media website as close as possible with CRUD features. I knew I needed a sign-in, back-end and state management tool so I chose Next-Auth, Firebase and Recoil. A takeaway I learned from the experience is that Next-Auth is a gamechanger. After using a normal registration form with my ecommerce site, I will always go with Next-Auth in the future. Instead of filling out your information individally, Next-Auth allows a single click sign-in with most providers (I chose Google) which helps onboard users faster. 
+The goal of this project was to replicate a social media website as close as possible with CRUD features. I knew I needed a sign-in, back-end, and state management tool so I chose Next-Auth, Firebase, and Recoil. A takeaway I learned from the experience is that Next-Auth is a game-changer. After using a normal registration form with my eCommerce site, I will always go with Next-Auth in the future. Instead of filling out your information individually, Next-Auth allows a single click sign-in with most providers (I chose Google) which helps onboard users faster.
 
-I also gained experience with Firebase and Recoil. I used Sanity in my ecommerce project, and they are both amazing backends. Both of them have their pros and cons, and I will use both in the future. However Recoil seems to be a better experience in this project compared to react context. It has more of the same properties of useState which I'm familiar of. 
+I also gained experience with Firebase and Recoil. I used Sanity in my eCommerce project, and they are both amazing backends. Both of them have their pros and cons, and I will use both in the future. However, Recoil seems to be a better experience in this project compared to react context. It has more of the same properties of useState which I'm familiar with.
 
 # :crystal_ball: Visual Demo
 
