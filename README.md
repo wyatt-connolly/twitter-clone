@@ -34,6 +34,14 @@ This project was made using the follow technologies:
 - Post text/images
 - Like, comment and delete on others posts
 
+# :house: Local Development
+
+After intalling all dependencies (npm i) run this command:
+
+ `npm run dev`
+
+This will start both server and client in dev mode. The app is now available on localhost:3000.
+
 # :pencil: Lessons
 
 The goal of this project was to replicate a social media website as close as possible with CRUD features. I knew I needed a sign-in, back-end, and state management tool so I chose Next-Auth, Firebase, and Recoil. A takeaway I learned from the experience is that Next-Auth is a game-changer. After using a normal registration form with my eCommerce site, I will always go with Next-Auth in the future. Instead of filling out your information individually, Next-Auth allows a single click sign-in with most providers (I chose Google) which helps onboard users faster.
@@ -61,3 +69,8 @@ I also gained experience with Firebase and Recoil. I used Sanity in my eCommerce
 > **Comment**
 
 ![UTrormt](https://user-images.githubusercontent.com/88942814/167860324-81df5e52-d05b-47f8-ada1-f41be5135ade.png)
+
+
+# :link: License
+
+Design and assets belong to [twitter.com](https://www.twitter.com
